@@ -1,0 +1,35 @@
+<div class="card border-secondary mb-3">
+  <div class="card-header">Clientes</div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title">Lista de clientes</h5>
+<div class="my-2">
+  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/cliente/form']">Crear Cliente</button>
+
+</div>
+
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>nombre</th>
+      <th>apellido</th>
+      <th>correo</th>
+      <th>fecha</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td><button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/cliente', cliente.id]">{{cliente.id}}</button></td>
+      <td>{{cliente.nombre}}</td>
+      <td>{{cliente.apellido}}</td>
+      <td>{{cliente.correo}}</td>
+      <td>{{cliente.fecha}}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+</div>
