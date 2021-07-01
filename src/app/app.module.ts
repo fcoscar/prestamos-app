@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'cliente/form', component: FormComponent},
   {path: 'cliente/:clienteId', component: VerClienteComponent},
   {path: 'prestamo/form/:clienteId', component: PFormComponent},
-  {path: 'prestamo/:clienteId/:prestamoId', component: DetallesPrestamo}
+  {path: 'prestamo/:clienteId/:prestamoId', component: DetallesPrestamo},
+  {path: 'cliente/editar/:clienteId', component: FormComponent}
 
 ];
 

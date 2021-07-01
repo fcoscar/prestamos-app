@@ -21,10 +21,15 @@ export class ClienteService {
     return this.http.post<Cliente>(this.urlEndpoint + '/guardar', cliente, {headers: this.httpHeaders});
   }
 
-  getCliente(clienteId): Observable<Cliente>{
+  getOne(clienteId): Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndpoint}/cliente/${clienteId}`);
   }
 
+  update(cliente: Cliente): Observable<Cliente>{
+    return this.http.put<Cliente>(`${this.urlEndpoint}/editar/${cliente.id}`, cliente, {headers: this.httpHeaders});
+  }
 
-
+  delete(clienteId): Observable<Object>{
+    return this.http.delete(`${this.urlEndpoint}/borrar/${clienteId}`);
+  }
 }

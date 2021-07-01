@@ -29,7 +29,7 @@ clienteId;
       prestamo => this.prestamo = prestamo
     );
 
-    this.clienteService.getCliente(this.clienteId).subscribe(
+    this.clienteService.getOne(this.clienteId).subscribe(
       cliente => this.prestamo.cliente = cliente
     );
 

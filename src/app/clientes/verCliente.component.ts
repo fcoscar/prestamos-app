@@ -20,7 +20,7 @@ export class VerClienteComponent implements OnInit {
       this.clienteId = params.get('clienteId');
     });
 
-    this.clienteService.getCliente(this.clienteId).subscribe(
+    this.clienteService.getOne(this.clienteId).subscribe(
       cliente => this.cliente = cliente
     );
     }
@@ -32,7 +32,7 @@ export class VerClienteComponent implements OnInit {
     this.refresh();
   }
 
-refresh(): void {
+  refresh(): void {
     window.location.reload();
 }
 

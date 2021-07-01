@@ -1,10 +1,14 @@
 <div class="card bg-white text-dark">
-  <div class="card-header">
-    {{ titulo }}
+  <div class="card-header" >
+    <h6 *ngIf="!cliente.id else elseBlock2">{{ titulo }}</h6>
+
+    <ng-template #elseBlock2>
+      <h6>Actulizar Cliente</h6>
+    </ng-template>
   </div>
   <div class="card-body">
 
-    <form (ngSubmit) = "createCliente()">
+    <form>
 
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
@@ -21,7 +25,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="correo" class="col-form-label col-sm-2">Telefono</label>
+        <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
         <div class="col-sm-6">
           <input type="text" class="from-control" [(ngModel)]="cliente.telefono" name="telefono">
         </div>
@@ -36,7 +40,11 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button">Crear</button>
+          <button class="btn btn-primary" role="button" (click)='createCliente()' *ngIf="!cliente.id else elseBlock">Crear</button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)='update()'>Actualizar</button>
+          </ng-template>
         </div>
       </div>
 

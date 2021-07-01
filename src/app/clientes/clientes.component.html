@@ -17,6 +17,8 @@
       <th>correo</th>
       <th>telefono</th>
       <th>fecha</th>
+      <th>editar</th>
+      <th>eliminar</th>
 
     </tr>
   </thead>
@@ -28,7 +30,8 @@
       <td>{{cliente.correo}}</td>
       <td>{{cliente.telefono}}</td>
       <td>{{cliente.fecha}}</td>
-
+      <td><button class="btn btn-rounded btn-success" type="button" [routerLink]="['/cliente/editar',cliente.id]">Editar</button></td>
+      <td><button class="btn btn-rounded btn-danger" type="button" (click)="delete(cliente.id)">Eliminar</button></td>
     </tr>
   </tbody>
 </table>

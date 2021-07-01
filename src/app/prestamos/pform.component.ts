@@ -22,7 +22,7 @@ export class PFormComponent implements OnInit {
       this.clienteId = params.get('clienteId');
     });
 
-    this.clienteService.getCliente(this.clienteId).subscribe(
+    this.clienteService.getOne(this.clienteId).subscribe(
       cliente => this.prestamo.cliente = cliente
     );
     }
@@ -34,3 +34,4 @@ export class PFormComponent implements OnInit {
   }
 
   }
+
