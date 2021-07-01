@@ -11,8 +11,36 @@
         <li class="list-group-item active">{{cliente.nombre}}</li>
         <li class="list-group-item">{{cliente.apellido}}</li>
         <li class="list-group-item">{{cliente.correo}}</li>
+        <li class="list-group-item">{{cliente.telefono}}</li>
         <li class="list-group-item">{{cliente.fecha}}</li>
       </ul>
 
+
     </div>
+
+    <h4>Prestamos</h4>
     <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/prestamo/form', cliente.id]">Agregar Prestamo</button>
+
+      <table class="table table-bordered table-striped my-3">
+        <thead>
+          <tr>
+            <th>Prestamo Id</th>
+            <th>Descripcion</th>
+            <th>Monto</th>
+            <th>Cuotas</th>
+            <th>Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prestamo of cliente.prestamos">
+            <td><button class="btn btn-primary btn-rounded" type="button" [routerLink]="['/prestamo', cliente.id ,prestamo.prestamoId]">{{prestamo.prestamoId}} </button></td>
+            <td>{{prestamo.descripcion}}</td>
+            <td>{{prestamo.monto}}</td>
+            <td>{{prestamo.cuotas + "/" + prestamo.saldoXmes}}</td>
+            <td><button class="btn btn-success btn-rounded" type="button" (click)="pagoPrestamo(prestamo.prestamoId)" >Realizar Pago</button></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+</div>

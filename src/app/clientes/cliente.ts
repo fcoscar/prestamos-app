@@ -5,5 +5,6 @@ export class Cliente {
   apellido: string;
   correo: string;
   fecha: string;
-  prestamo: Prestamo[];
+  prestamos: Prestamo[];
+  telefono: string;
 }

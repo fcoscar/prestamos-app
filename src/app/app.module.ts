@@ -13,13 +13,15 @@ import { FormsModule } from '@angular/forms';
 import { VerClienteComponent } from './clientes/verCliente.component';
 import { PFormComponent } from './prestamos/pform.component';
 import { PrestamoService } from './prestamos/prestamo.service';
+import { DetallesPrestamo } from './prestamos/detalles.component'
 
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
   {path: 'home', component: ClientesComponent},
   {path: 'cliente/form', component: FormComponent},
   {path: 'cliente/:clienteId', component: VerClienteComponent},
-  {path: 'prestamo/form/:clienteId', component: PFormComponent}
+  {path: 'prestamo/form/:clienteId', component: PFormComponent},
+  {path: 'prestamo/:clienteId/:prestamoId', component: DetallesPrestamo}
 
 ];
 
@@ -32,7 +34,8 @@ const routes: Routes = [
     ClientesComponent,
     FormComponent,
     VerClienteComponent,
-    PFormComponent
+    PFormComponent,
+    DetallesPrestamo
 
   ],
   imports: [

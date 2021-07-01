@@ -1,0 +1,51 @@
+<div class="mb-3">
+  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/cliente', prestamo.cliente.id]">Atras</button>
+</div>
+
+<div class="card border-secondary mb-3">
+  <div class="card-header">Prestamo {{prestamo.descripcion}} </div>
+    <div class="card-body text-secondary">
+        <h4 class="mb-3">Cliente</h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item active">Datos del Cliente</li>
+          <li class="list-group-item">{{prestamo.cliente.nombre + ' ' + prestamo.cliente.apellido}}</li>
+          <li class="list-group-item">{{prestamo.cliente.correo}}</li>
+          <li class="list-group-item">{{prestamo.cliente.telefono}}</li>
+        </ul>
+
+
+      <h4 class="mb-3">Prestamo</h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item active">Datos del Prestamo</li>
+        <li class="list-group-item">Prestamo Id: {{prestamo.prestamoId}}</li>
+        <li class="list-group-item">Descripcion: {{prestamo.descripcion}}</li>
+        <li class="list-group-item">Monto del prestamo: {{prestamo.monto + "/" + prestamo.monto_inicial}}</li>
+        <li class="list-group-item">Cuotas del prestamo: {{prestamo.cuotas + "/" + prestamo.cuota_inicial}}</li>
+        <li class="list-group-item">Fecha: {{prestamo.fecha}}</li>
+      </ul>
+
+      <h4 class="mb-3">Movimientos Prestamo</h4>
+      <table class="table table-bordered table-striped my-3">
+        <thead>
+          <tr>
+            <th>Abonado</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mov of prestamo.movimientos">
+            <td>{{mov.abonado}}</td>
+            <td>{{mov.monto}}</td>
+            <td>{{mov.fecha}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+    </div>
+
+
+</div>
