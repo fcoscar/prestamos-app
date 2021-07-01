@@ -17,22 +17,20 @@ export class PFormComponent implements OnInit {
   clienteId;
   constructor(private clienteService: ClienteService, private prestamoService: PrestamoService,private _Activatedroute:ActivatedRoute, private router: Router) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this._Activatedroute.paramMap.subscribe(params => {
-    this.clienteId = params.get('clienteId');
+      this.clienteId = params.get('clienteId');
+    });
 
     this.clienteService.getCliente(this.clienteId).subscribe(
       cliente => this.prestamo.cliente = cliente
     );
-});
-
-  //
-  }
+    }
 
   public createPrestamo(): void{
-
     this.prestamoService.createPrestamo(this.prestamo).subscribe(
       response => this.router.navigate(['/cliente', this.prestamo.cliente.id])//redigir
-    )
+    );
   }
+
   }

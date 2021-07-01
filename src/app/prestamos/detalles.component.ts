@@ -19,10 +19,11 @@ clienteId;
   ngOnInit() {
     this._Activatedroute.paramMap.subscribe( params =>{
       this.prestamoId = params.get('prestamoId')
-    })
+    });
+
     this._Activatedroute.paramMap.subscribe( params =>{
       this.clienteId = params.get('clienteId')
-    })
+    });
 
     this.prestamoService.getOne(this.prestamoId).subscribe(
       prestamo => this.prestamo = prestamo
@@ -30,9 +31,9 @@ clienteId;
 
     this.clienteService.getCliente(this.clienteId).subscribe(
       cliente => this.prestamo.cliente = cliente
-    )
+    );
 
-   }
+  }
 
 
 

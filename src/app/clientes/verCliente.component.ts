@@ -20,18 +20,21 @@ export class VerClienteComponent implements OnInit {
       this.clienteId = params.get('clienteId');
     });
 
-
     this.clienteService.getCliente(this.clienteId).subscribe(
       cliente => this.cliente = cliente
     );
-}
-pagoPrestamo(prestamoId){
-  this.prestamoService.pagoPrestamo(prestamoId).subscribe(
-    response => this.router.navigate(['/cliente', this.clienteId])//redigir
-  )
-  this.refresh();
-}
+    }
+
+  pagoPrestamo(prestamoId){
+    this.prestamoService.pagoPrestamo(prestamoId).subscribe(
+      response => this.router.navigate(['/cliente', this.clienteId])//redigir
+    );
+    this.refresh();
+  }
+
 refresh(): void {
     window.location.reload();
 }
-  }
+
+
+}

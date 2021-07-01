@@ -14,15 +14,15 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   getClientes(): Observable<Cliente[]> {
-
     return this.http.get<Cliente[]>(this.urlEndpoint);
   }
+
   createCliente(cliente: Cliente): Observable<Cliente>{
-    return this.http.post<Cliente>(this.urlEndpoint + '/guardar', cliente, {headers: this.httpHeaders} )
-                                    //url mas link del backend
+    return this.http.post<Cliente>(this.urlEndpoint + '/guardar', cliente, {headers: this.httpHeaders});
   }
+
   getCliente(clienteId): Observable<Cliente>{
-    return this.http.get<Cliente>(`${this.urlEndpoint}/cliente/${clienteId}`)
+    return this.http.get<Cliente>(`${this.urlEndpoint}/cliente/${clienteId}`);
   }
 
 

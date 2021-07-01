@@ -18,6 +18,6 @@ export class FormComponent implements OnInit {
   public createCliente(): void{
     this.clienteService.createCliente(this.cliente).subscribe(
       response => this.router.navigate(['/home'])//redigir
-    )
+    );
   }
   }
