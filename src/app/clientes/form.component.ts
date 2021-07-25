@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class FormComponent implements OnInit {
   public cliente: Cliente = new Cliente();
-  public titulo: String = "Agregar Cliente"
+  public titulo: String = "Agregar Cliente";
   constructor(private clienteService: ClienteService, private router: Router, private _Activatedroute:ActivatedRoute) { }
 
   ngOnInit(): void {

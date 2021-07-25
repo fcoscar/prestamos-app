@@ -13,8 +13,8 @@ export class PrestamoService{
   createPrestamo(prestamo: Prestamo): Observable<Prestamo> {
     return this.http.post<Prestamo>(this.urlEndpoint + '/guardar', prestamo, {headers: this.httpHeaders})
   }
-  pagoPrestamo(prestamoId){
-    return this.http.put(`${this.urlEndpoint}/pago/${prestamoId}`, prestamoId, {headers: this.httpHeaders})
+  pagoPrestamo(prestamo: Prestamo){
+    return this.http.put(`${this.urlEndpoint}/pago/${prestamo.prestamoId}/${prestamo.abonado}`, prestamo, {headers: this.httpHeaders})
   }
   getOne(prestamoId): Observable<Prestamo>{
     return this.http.get<Prestamo>(`${this.urlEndpoint}/${prestamoId}`);

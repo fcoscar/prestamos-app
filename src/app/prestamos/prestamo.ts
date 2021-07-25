@@ -11,4 +11,5 @@ export class Prestamo{
   saldoXmes: number;
   movimientos: MovPrestamo[];
   fecha: string;
+  abonado: number;
 }

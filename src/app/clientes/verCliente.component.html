@@ -1,5 +1,5 @@
 <div class="my-2">
-  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/cliente/form']">Crear Cliente</button>
+  <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/home']">Atras</button>
 </div>
 
 <div class="card border-secondary mb-3">
@@ -8,20 +8,23 @@
 
   <div class="card-body">
       <ul class="list-group">
-        <li class="list-group-item active">{{cliente.nombre}}</li>
-        <li class="list-group-item">{{cliente.apellido}}</li>
-        <li class="list-group-item">{{cliente.correo}}</li>
-        <li class="list-group-item">{{cliente.telefono}}</li>
-        <li class="list-group-item">{{cliente.fecha}}</li>
+        <li class="list-group-item active">{{cliente?.nombre}}</li>
+        <li class="list-group-item">{{cliente?.apellido}}</li>
+        <li class="list-group-item">{{cliente?.correo}}</li>
+        <li class="list-group-item">{{cliente?.telefono}}</li>
+        <li class="list-group-item">{{cliente?.fecha}}</li>
       </ul>
 
 
     </div>
 
     <h4>Prestamos</h4>
-    <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/prestamo/form', cliente.id]">Agregar Prestamo</button>
+    <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/prestamo/form', cliente?.id]">Agregar Prestamo</button>
+      <div *ngIf="cliente?.prestamos.length==0" class="alert alert-info my-3">
+        No hay prestamos para {{cliente?.nombre + " " + cliente?.apellido}}
+      </div>
 
-      <table class="table table-bordered table-striped my-3">
+      <table class="table table-bordered table-striped my-3" *ngIf="cliente?.prestamos.length>0">
         <thead>
           <tr>
             <th>Prestamo Id</th>
@@ -34,10 +37,18 @@
         <tbody>
           <tr *ngFor="let prestamo of cliente.prestamos">
             <td><button class="btn btn-primary btn-rounded" type="button" [routerLink]="['/prestamo', cliente.id ,prestamo.prestamoId]">{{prestamo.prestamoId}} </button></td>
-            <td>{{prestamo.descripcion}}</td>
-            <td>{{prestamo.monto}}</td>
-            <td>{{prestamo.cuotas + "/" + prestamo.saldoXmes}}</td>
-            <td><button class="btn btn-success btn-rounded" type="button" (click)="pagoPrestamo(prestamo.prestamoId)" >Realizar Pago</button></td>
+            <td>{{prestamo?.descripcion}}</td>
+            <td>{{prestamo?.monto}}</td>
+            <td>{{prestamo?.cuotas + "/" + prestamo?.saldoXmes}}</td>
+            <td>
+              <form>
+                <input type="text" class="from-control" [(ngModel)]="prestamo.abonado" name="abonado">
+                <button class="btn btn-success btn-rounded" role="button" (click)="pagoPrestamo(prestamo)" >Realizar Pago</button>
+              </form>
+
+
+
+            </td>
           </tr>
         </tbody>
       </table>
