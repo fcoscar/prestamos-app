@@ -29,7 +29,10 @@ export class PFormComponent implements OnInit {
 
   public createPrestamo(): void{
     this.prestamoService.createPrestamo(this.prestamo).subscribe(
-      response => this.router.navigate(['/cliente', this.prestamo.cliente.id])//redigir
+      json => {
+        this.router.navigate(['/cliente', this.prestamo.cliente.id])//redigir
+        alert(`${json.mensaje}`);
+      }
     );
   }
 

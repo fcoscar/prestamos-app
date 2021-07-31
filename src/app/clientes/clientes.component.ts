@@ -12,7 +12,7 @@ export class ClientesComponent implements OnInit {
   clientes: Cliente[];
 
 
-  constructor(private router:Router, private clienteService: ClienteService,private _Activatedroute:ActivatedRoute) { }
+  constructor(private router:Router,private clienteService: ClienteService, private _Activatedroute:ActivatedRoute) { }
 
   ngOnInit() {
     this.clienteService.getClientes().subscribe(

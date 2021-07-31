@@ -18,8 +18,9 @@ export class FormComponent implements OnInit {
 
   public createCliente(): void{
     this.clienteService.createCliente(this.cliente).subscribe(
-      cliente => this.router.navigate(['/home'])//redigir
-
+      json => {
+        this.router.navigate(['/home'])//redigir
+        alert(`${json.mensaje}: ${json.cliente.nombre +" "+json.cliente.apellido}`)}
     );
   }
 
@@ -36,10 +37,10 @@ export class FormComponent implements OnInit {
 
   }
 
-
   public update(): void{
     this.clienteService.update(this.cliente).subscribe(
-      cliente => this.router.navigate(['/home'])
+      cliente => { this.router.navigate(['/home'])
+      alert(` El cliente ${cliente.nombre +" "+cliente.apellido} ha sido creado correctamente`)}
     )
   }
   }
