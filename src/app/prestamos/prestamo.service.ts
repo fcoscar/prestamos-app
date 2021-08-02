@@ -8,6 +8,7 @@ import { catchError} from "rxjs/operators";
 export class PrestamoService{
   private urlEndpoint :string = 'http://localhost:8081/prestamo';
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
+  private prestamo:Prestamo;
 
   constructor(private http: HttpClient){ }
 
@@ -19,10 +20,20 @@ export class PrestamoService{
       })
     )
   }
-  pagoPrestamo(prestamo: Prestamo){
-    return this.http.put(`${this.urlEndpoint}/pago/${prestamo.prestamoId}/${prestamo.abonado}`, prestamo, {headers: this.httpHeaders})
+  pagoPrestamo(prestamo: Prestamo): Observable<any>{
+    return this.http.put<any>(`${this.urlEndpoint}/pago/${prestamo.prestamoId}/${prestamo.abonado}`, prestamo, {headers: this.httpHeaders}).pipe(
+      catchError(err => {
+        alert(err.error.mensaje);
+        return throwError(err);
+      })
+    )
   }
   getOne(prestamoId): Observable<Prestamo>{
-    return this.http.get<Prestamo>(`${this.urlEndpoint}/${prestamoId}`);
+    return this.http.get<Prestamo>(`${this.urlEndpoint}/${prestamoId}`).pipe(
+      catchError(err => {
+        alert(err.error.mensaje);
+        return throwError(err);
+      })
+    );
   }
 }

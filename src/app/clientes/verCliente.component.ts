@@ -25,11 +25,13 @@ export class VerClienteComponent implements OnInit {
     );
     }
 
-  pagoPrestamo(prestamoId){
-    this.prestamoService.pagoPrestamo(prestamoId).subscribe(
-      response => this.router.navigate(['/cliente', this.clienteId])//redigir
+  pagoPrestamo(prestamo): void{
+    this.prestamoService.pagoPrestamo(prestamo).subscribe(
+      json => {this.refresh()//redigir
+      alert(`${json.response.mensaje}`);
+      }
     );
-    this.refresh();
+
   }
 
   refresh(): void {

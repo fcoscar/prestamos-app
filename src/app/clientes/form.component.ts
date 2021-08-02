@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
   public update(): void{
     this.clienteService.update(this.cliente).subscribe(
       cliente => { this.router.navigate(['/home'])
-      alert(` El cliente ${cliente.nombre +" "+cliente.apellido} ha sido creado correctamente`)}
+      alert(` El cliente ${cliente.nombre +" "+ cliente.apellido} ha sido creado correctamente`)}
     )
   }
   }
