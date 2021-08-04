@@ -8,7 +8,7 @@ import { Router} from "@angular/router";
 
 @Injectable()
 export class ClienteService {
-  private urlEndpoint: string = 'http://localhost:8081';
+  private urlEndpoint: string = 'http://localhost:8080';
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
 
@@ -48,8 +48,8 @@ export class ClienteService {
 
   }
 
-  delete(clienteId): Observable<Cliente>{
-    return this.http.delete<Cliente>(`${this.urlEndpoint}/borrar/${clienteId}`).pipe(
+  delete(clienteId): Observable<any>{
+    return this.http.delete<any>(`${this.urlEndpoint}/borrar/${clienteId}`).pipe(
       catchError(err => {
         alert(err.error.mensaje);
         return throwError(err);

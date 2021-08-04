@@ -22,9 +22,10 @@ export class ClientesComponent implements OnInit {
 
   delete(clienteId){
     this.clienteService.delete(clienteId).subscribe(
-      response => this.router.navigate(['/home'])
+      json => {this.refresh()
+      alert(`${json.mensaje}`)}
     );
-    this.refresh();
+
   }
   refresh(): void {
     window.location.reload();

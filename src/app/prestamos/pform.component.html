@@ -10,33 +10,51 @@
 
   <div class="card-body">
 
-    <form (ngSubmit) = "createPrestamo()">
+    <form #form="ngForm" (ngSubmit) = "createPrestamo()">
 
               <div class="form-group row">
-                <label for="monto" class="col-form-label col-sm-2">Descripcion</label>
+                <label for="descripcion" class="col-form-label col-sm-2">Descripcion</label>
                 <div class="col-sm-6">
-                  <input type="text" class="from-control" [(ngModel)]="prestamo.descripcion" name="descripcion">
+                  <input type="text" class="from-control" [(ngModel)]="prestamo.descripcion" name="descripcion" required #descripcion="ngModel">
+                  <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.touched || descripcion.dirty)">
+                    <div *ngIf="descripcion.errors.required">
+                      La descripcion es requerida
+                    </div>
+                  </div>
                 </div>
               </div>
 
             <div class="form-group row">
               <label for="monto" class="col-form-label col-sm-2">Monto</label>
               <div class="col-sm-6">
-                <input type="text" class="from-control" [(ngModel)]="prestamo.monto" name="monto">
+                <input type="text" class="from-control" [(ngModel)]="prestamo.monto" name="monto" required #monto="ngModel">
+                <div class="alert alert-danger" *ngIf="monto.invalid && (monto.touched || monto.dirty)">
+                  <div *ngIf="monto.errors.required">
+                    El monto es requerido
+              </div>
+                </div>
               </div>
             </div>
+
 
             <div class="form-group row">
               <label for="cuotas" class="col-form-label col-sm-2">Cuotas</label>
               <div class="col-sm-6">
-                <input type="text" class="from-control" [(ngModel)]="prestamo.cuotas" name="cuotas">
+                <input type="text" class="from-control" [(ngModel)]="prestamo.cuotas" name="cuotas" required #cuotas="ngModel">
+                <div class="alert alert-danger" *ngIf="cuotas.invalid && (cuotas.touched || cuotas.dirty)">
+                  <div *ngIf="cuotas.errors.required">
+                    la cantidad de cuotas es requerida
               </div>
             </div>
+              </div>
+            </div>
+
+
             <input type="hidden" value="prestamo.cliente.id">
 
             <div class="form-group row">
               <div class="col-sm-6">
-                <button class="btn btn-primary" role="button">Crear</button>
+                <button class="btn btn-primary" role="button" [disabled]="!form.form.valid">Crear</button>
               </div>
             </div>
 
